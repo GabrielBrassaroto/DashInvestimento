@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DashInvestimentos.Migrations
 {
     [DbContext(typeof(DashInvestimentosContext))]
-    [Migration("20200816155458_InitialCreate")]
+    [Migration("20200816190631_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +21,31 @@ namespace DashInvestimentos.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DashInvestimentos.Models.Movimentacao", b =>
+                {
+                    b.Property<int>("MovimentacaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OperacaoId");
+
+                    b.Property<string>("Tipo");
+
+                    b.Property<float>("ValorCompra");
+
+                    b.Property<float>("ValorVenda");
+
+                    b.HasKey("MovimentacaoId");
+
+                    b.HasIndex("OperacaoId")
+                        .IsUnique();
+
+                    b.ToTable("Movimentacao");
+                });
+
             modelBuilder.Entity("DashInvestimentos.Models.Operacao", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OperacaoId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -31,15 +53,19 @@ namespace DashInvestimentos.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("Quantida");
+                    b.Property<int>("Quantidade");
 
-                    b.Property<string>("Tipo");
-
-                    b.Property<float>("ValorOperacao");
-
-                    b.HasKey("Id");
+                    b.HasKey("OperacaoId");
 
                     b.ToTable("Operacao");
+                });
+
+            modelBuilder.Entity("DashInvestimentos.Models.Movimentacao", b =>
+                {
+                    b.HasOne("DashInvestimentos.Models.Operacao", "Operacao")
+                        .WithOne("Movimentacao")
+                        .HasForeignKey("DashInvestimentos.Models.Movimentacao", "OperacaoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

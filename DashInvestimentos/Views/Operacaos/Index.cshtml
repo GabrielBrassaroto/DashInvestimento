@@ -13,16 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Ativo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorOperacao)
+                @Html.DisplayNameFor(model => model.Quantidade)
             </th>
             <th></th>
         </tr>
@@ -31,29 +28,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.ValorOperacao.ToString(@"0000\-0000"))*@
-                @item.ValorOperacao.ToString(@"0000\,00")
+                @Html.DisplayFor(modelItem => item.Quantidade)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.OperacaoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OperacaoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OperacaoId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<script>
-
-    $("#item.ValorOperacao").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true }});
-
-</script>

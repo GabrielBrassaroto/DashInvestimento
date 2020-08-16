@@ -11,12 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
         <dd>
@@ -29,14 +23,14 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ValorOperacao)
+            @Html.DisplayNameFor(model => model.Quantidade)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ValorOperacao)
+            @Html.DisplayFor(model => model.Quantidade)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.OperacaoId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

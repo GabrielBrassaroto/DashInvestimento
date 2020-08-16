@@ -13,31 +13,32 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Tipo" class="control-label">Tipo de Compra</label>
-                <select asp-for="Tipo" class="form-control form-control-lg">
-                    <option value="Compra">Compra</option>
-                    <option value="Venda">Venda</option>
-                </select>
-                @*<input asp-for="Tipo" class="form-control" />*@
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ativo" class="control-label"> Ativo</label>
-                <select asp-for="Ativo" class="form-control form-control-lg">
-                    <option value="ITSA4">ITSA4</option>
-                </select>
-                @*<input asp-for="Ativo" class="form-control" />*@
+                <label asp-for="Ativo" class="control-label"></label>
+                <input asp-for="Ativo" class="form-control" />
                 <span asp-validation-for="Ativo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"> Data da movimentação </label>
+                <label asp-for="Movimentacao.ValorCompra" class="control-label">Valor Compra</label>
+                <input asp-for="Movimentacao.ValorCompra" class="form-control" />
+                <span asp-validation-for="Movimentacao.ValorCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movimentacao.Tipo" class="control-label">Tipo da Movimentação</label>
+                <select asp-for="Movimentacao.Tipo" class="form-control form-control-lg">
+                    <option value="Compra">Compra</option>
+                </select>
+                @*<input asp-for="Tipo" class="form-control" />*@
+                <span asp-validation-for="Movimentacao.Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ValorOperacao" class="control-label"> Valor da Operacao</label>
-                <input asp-for="ValorOperacao" class="form-control" />
-                <span asp-validation-for="ValorOperacao" class="text-danger"></span>
+                <label asp-for="Quantidade" class="control-label"></label>
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

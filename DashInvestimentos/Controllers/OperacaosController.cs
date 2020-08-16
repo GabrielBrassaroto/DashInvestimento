@@ -34,7 +34,7 @@ namespace DashInvestimentos.Controllers
             }
 
             var operacao = await _context.Operacao
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.OperacaoId == id);
             if (operacao == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace DashInvestimentos.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tipo,Ativo,Date,ValorOperacao")] Operacao operacao)
+        public async Task<IActionResult> Create([Bind("Id,Ativo,Date,Movimentacao")] Operacao operacao)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace DashInvestimentos.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tipo,Ativo,Date,ValorOperacao")] Operacao operacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Ativo,Date,Quantidade")] Operacao operacao)
         {
-            if (id != operacao.Id)
+            if (id != operacao.OperacaoId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace DashInvestimentos.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OperacaoExists(operacao.Id))
+                    if (!OperacaoExists(operacao.OperacaoId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace DashInvestimentos.Controllers
             }
 
             var operacao = await _context.Operacao
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.OperacaoId == id);
             if (operacao == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace DashInvestimentos.Controllers
 
         private bool OperacaoExists(int id)
         {
-            return _context.Operacao.Any(e => e.Id == id);
+            return _context.Operacao.Any(e => e.OperacaoId == id);
         }
     }
 }
