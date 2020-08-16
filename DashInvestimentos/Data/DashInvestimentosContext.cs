@@ -14,6 +14,6 @@ namespace DashInvestimentos.Data
         {
         }
 
-        public DbSet<DashInvestimentos.Models.Operacao> Operacao { get; set; }
+        public DbSet<DashInvestimentos.Models.Movimentacao> Movimentacao { get; set; }
     }
 }

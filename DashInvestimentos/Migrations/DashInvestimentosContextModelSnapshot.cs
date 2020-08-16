@@ -25,9 +25,17 @@ namespace DashInvestimentos.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OperacaoId");
+                    b.Property<string>("Ativo");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("Quantidade");
+
+                    b.Property<string>("Status");
 
                     b.Property<string>("Tipo");
+
+                    b.Property<float>("TotalMovimentacao");
 
                     b.Property<float>("ValorCompra");
 
@@ -35,35 +43,7 @@ namespace DashInvestimentos.Migrations
 
                     b.HasKey("MovimentacaoId");
 
-                    b.HasIndex("OperacaoId")
-                        .IsUnique();
-
                     b.ToTable("Movimentacao");
-                });
-
-            modelBuilder.Entity("DashInvestimentos.Models.Operacao", b =>
-                {
-                    b.Property<int>("OperacaoId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Ativo");
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<int>("Quantidade");
-
-                    b.HasKey("OperacaoId");
-
-                    b.ToTable("Operacao");
-                });
-
-            modelBuilder.Entity("DashInvestimentos.Models.Movimentacao", b =>
-                {
-                    b.HasOne("DashInvestimentos.Models.Operacao", "Operacao")
-                        .WithOne("Movimentacao")
-                        .HasForeignKey("DashInvestimentos.Models.Movimentacao", "OperacaoId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

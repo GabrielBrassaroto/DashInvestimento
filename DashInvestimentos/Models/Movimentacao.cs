@@ -11,14 +11,20 @@ namespace DashInvestimentos.Models
 
         public int MovimentacaoId { get; set; }
 
+        public string Ativo { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public int Quantidade { get; set; }
+
         public string Tipo { get; set; }
 
         public float ValorVenda { get; set; }
 
         public float ValorCompra { get; set; }
 
-        public Operacao Operacao { get; set; }
+        public float TotalMovimentacao { get; set; }
 
-        public int OperacaoId { get; set; }
+        public string Status { get; set; }
     }
 }
