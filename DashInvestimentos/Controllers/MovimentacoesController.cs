@@ -58,6 +58,7 @@ namespace DashInvestimentos.Controllers
         {
             if (ModelState.IsValid)
             {
+                movimentacao.Tipo = "COMPRA";
                 movimentacao.Status = "ABERTA";
                 _context.Add(movimentacao);
                 await _context.SaveChangesAsync();
