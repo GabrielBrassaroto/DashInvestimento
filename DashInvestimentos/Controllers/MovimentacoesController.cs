@@ -173,7 +173,7 @@ namespace DashInvestimentos.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Close(int id, [Bind("MovimentacaoId,ValorVenda,TotalMovimentacao,Status")] Movimentacao movimentacao)
+        public async Task<IActionResult> Close(int id, [Bind("MovimentacaoId,Ativo,ValorVenda,TotalMovimentacao,Status,Tipo,Quantidade,Date,ValorCompra")] Movimentacao movimentacao)
         {
             if (id != movimentacao.MovimentacaoId)
             {
